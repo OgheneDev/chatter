@@ -52,8 +52,8 @@ const ChartsGrid: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen p-4">
-      <div className="max-w-6xl mx-auto"> {/* Reduced from 7xl to 6xl */}
+    <div className="min-h-screen mb-7">
+      <div className="max-w-7xl md:max-w-6xl mx-auto"> {/* Reduced from 7xl to 6xl */}
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4"> {/* Reduced gap from 6 to 4 */}
           <AnalyticsChart 

@@ -185,7 +185,7 @@ const MusicManagement: React.FC = () => {
   ];
 
   return (
-    <div className="my-10 px-2 md:px-0 max-w-[310px] md:max-w-full">
+    <div className="my-10 px-2 md:px-0 max-w-[320px] mx-auto md:mx-0 md:max-w-full">
       {/* Mobile Tab Dropdown */}
       <div className="mb-7 md:hidden">
         <select
