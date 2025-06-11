@@ -202,7 +202,7 @@ const ReportsManagement: React.FC = () => {
         return 'Content';
     }
   };
-
+ 
   
   return (
     <div className="my-10 px-2 md:px-0 max-w-[320px] mx-auto md:mx-0 md:max-w-full">
@@ -266,7 +266,7 @@ const ReportsManagement: React.FC = () => {
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="border border-gray-300 rounded-full px-5 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                className="border border-gray-300 rounded-full px-4 py-2 text-sm w-full md:w-auto focus:outline-none focus:ring-2 focus:ring-green-500"
                 placeholder="Search reports..."
               />
             </div>
