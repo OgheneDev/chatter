@@ -9,14 +9,10 @@ import {
   Home,
   Users,
   Image,
-  Play,
+  MessagesSquare,
+  BarChart2,
   Music,
-  Eye,
-  Gamepad2,
-  Heart,
-  Shield,
   FileBarChart,
-  HelpCircle,
 } from 'lucide-react';
 
 type MenuItem = {
@@ -29,14 +25,10 @@ const menuItems: MenuItem[] = [
   { icon: Home, name: 'Dashboard', path: '/' },
   { icon: Users, name: 'Users', path: '/users' },
   { icon: Image, name: 'Posts', path: '/posts' },
-  { icon: Play, name: 'Reels', path: '/reels' },
   { icon: Music, name: 'Music', path: '/music' },
-  { icon: Eye, name: 'Stories', path: '/stories' },
-  { icon: Gamepad2, name: 'Rooms', path: '/rooms' },
-  { icon: Heart, name: 'Interests', path: '/interests' },
-  { icon: Shield, name: 'Restrictions', path: '/restrictions' },
   { icon: FileBarChart, name: 'Reports', path: '/reports' },
-  { icon: HelpCircle, name: 'FAQs', path: '/faqs' },
+  { icon: MessagesSquare, name: 'Messages', path: '/messages' },
+  { icon: BarChart2, name: 'Insights', path: '/insights' },
 ];
 
 const Navbar: React.FC = () => {

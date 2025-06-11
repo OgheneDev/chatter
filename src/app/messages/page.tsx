@@ -41,7 +41,37 @@ const MessagesManagement: React.FC = () => {
       isFlagged: true,
       flagReason: "Spam messages"
     },
-    // Add more sample data as needed
+    {
+      id: 3,
+      username: "sarah_parker",
+      fullname: "Sarah Parker",
+      messagesSent: 234,
+      messagesReceived: 198,
+      activeStatus: "very active",
+      lastActive: "5 mins ago",
+      isFlagged: false
+    },
+    {
+      id: 4,
+      username: "mark_wilson",
+      fullname: "Mark Wilson",
+      messagesSent: 45,
+      messagesReceived: 67,
+      activeStatus: "inactive",
+      lastActive: "2 days ago",
+      isFlagged: false
+    },
+    {
+      id: 5,
+      username: "emily_brown",
+      fullname: "Emily Brown",
+      messagesSent: 178,
+      messagesReceived: 156,
+      activeStatus: "active",
+      lastActive: "30 mins ago",
+      isFlagged: true,
+      flagReason: "Inappropriate content"
+    }
   ];
 
   // Stats data
@@ -109,6 +139,30 @@ const MessagesManagement: React.FC = () => {
     return filtered;
   }, [searchTerm, activeFilter]);
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredInsights.length / entriesPerPage);
+  const startIndex = (currentPage - 1) * entriesPerPage;
+  const endIndex = startIndex + entriesPerPage;
+  const currentInsights = filteredInsights.slice(startIndex, endIndex);
+
+  // Reset page when filter or search changes
+  React.useEffect(() => {
+    setCurrentPage(1);
+  }, [activeFilter, searchTerm, entriesPerPage]);
+
+  // Action handlers
+  const handleViewMessages = (userId: number) => {
+    console.log(`View messages for user ${userId}`);
+  };
+
+  const handleBlockUser = (userId: number) => {
+    console.log(`Block user ${userId}`);
+  };
+
+  const handleFlagConversation = (userId: number) => {
+    console.log(`Flag conversation for user ${userId}`);
+  };
+
   return (
     <div className="my-10 px-2 md:px-0 max-w-[320px] mx-auto md:mx-0 md:max-w-full">
       {/* Stats Cards */}
@@ -166,7 +220,33 @@ const MessagesManagement: React.FC = () => {
       <div className='shadow-md bg-white rounded-xl'>
         {/* Table controls */}
         <div className="p-4 md:p-6 border-b border-gray-200">
-          {/* ... Similar controls as in posts/reports pages ... */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
+            <div className="flex items-center space-x-2">
+              <span className="text-sm text-gray-700">Show</span>
+              <select
+                value={entriesPerPage}
+                onChange={(e) => setEntriesPerPage(Number(e.target.value))}
+                className="border border-gray-300 rounded-full px-7 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+              >
+                <option value={5}>5</option>
+                <option value={10}>10</option>
+                <option value={25}>25</option>
+                <option value={50}>50</option>
+              </select>
+              <span className="text-sm text-gray-700">entries</span>
+            </div>
+
+            <div className="flex items-center space-x-2">
+              <span className="text-sm text-gray-700">Search:</span>
+              <input
+                type="text"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="border border-gray-300 rounded-full px-4 py-2 text-sm w-full md:w-auto focus:outline-none focus:ring-2 focus:ring-green-500"
+                placeholder="Search users..."
+              />
+            </div>
+          </div>
         </div>
 
         {/* Table */}
@@ -184,14 +264,130 @@ const MessagesManagement: React.FC = () => {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {/* ... Table rows mapping similar to posts/reports pages ... */}
+              {currentInsights.length === 0 ? (
+                <tr>
+                  <td colSpan={7} className="px-6 py-8 text-center text-gray-500">
+                    No data available in table
+                  </td>
+                </tr>
+              ) : (
+                currentInsights.map((insight) => (
+                  <tr key={insight.id} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm font-medium text-green-500 underline cursor-pointer">
+                        {insight.username}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-900">{insight.fullname}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-700">{insight.messagesSent}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-700">{insight.messagesReceived}</div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                        insight.activeStatus === 'very active' 
+                          ? 'bg-green-100 text-green-800'
+                          : insight.activeStatus === 'active'
+                          ? 'bg-blue-100 text-blue-800'
+                          : 'bg-gray-100 text-gray-800'
+                      }`}>
+                        {insight.activeStatus}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="text-sm text-gray-700 flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        {insight.lastActive}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex space-x-2">
+                        <button
+                          onClick={() => handleViewMessages(insight.id)}
+                          className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors flex items-center space-x-2"
+                        >
+                          <Mail className="w-4 h-4" />
+                          <span>Messages</span>
+                        </button>
+                        <button
+                          onClick={() => handleFlagConversation(insight.id)}
+                          className={`${
+                            insight.isFlagged 
+                              ? 'bg-yellow-500 hover:bg-yellow-600'
+                              : 'bg-gray-500 hover:bg-gray-600'
+                          } text-white px-3 py-2 rounded-full text-sm font-semibold transition-colors`}
+                        >
+                          <AlertTriangle className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => handleBlockUser(insight.id)}
+                          className="bg-red-500 hover:bg-red-600 text-white px-3 py-2 rounded-full text-sm font-semibold transition-colors"
+                        >
+                          <Ban className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
 
         {/* Pagination */}
         <div className="px-4 md:px-6 py-4 border-t border-gray-200">
-          {/* ... Pagination component similar to posts/reports pages ... */}
+          <div className="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
+            <div className="text-sm text-gray-700">
+              Showing {currentInsights.length === 0 ? 0 : startIndex + 1} to {Math.min(endIndex, currentInsights.length)} of {currentInsights.length} entries
+            </div>
+            
+            <div className="flex items-center space-x-2">
+              <button
+                onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                disabled={currentPage === 1}
+                className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
+                  currentPage === 1
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-green-500 text-white hover:bg-green-600'
+                }`}
+              >
+                Previous
+              </button>
+              
+              {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
+                const pageNum = i + 1;
+                return (
+                  <button
+                    key={pageNum}
+                    onClick={() => setCurrentPage(pageNum)}
+                    className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
+                      currentPage === pageNum
+                        ? 'bg-green-500 text-white'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                    }`}
+                  >
+                    {pageNum}
+                  </button>
+                );
+              })}
+              
+              <button
+                onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                disabled={currentPage === totalPages || totalPages === 0}
+                className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
+                  currentPage === totalPages || totalPages === 0
+                    ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
+                    : 'bg-green-500 text-white hover:bg-green-600'
+                }`}
+              >
+                Next
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

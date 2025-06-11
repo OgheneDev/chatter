@@ -15,6 +15,7 @@ import {
   Shield,
   FileBarChart,
   HelpCircle,
+  BarChart2,
 } from 'lucide-react';
 
 type MenuItem = {
@@ -27,14 +28,10 @@ const menuItems: MenuItem[] = [
   { icon: Home, name: 'Dashboard', path: '/' },
   { icon: Users, name: 'Users', path: '/users' },
   { icon: Image, name: 'Posts', path: '/posts' },
-  { icon: Play, name: 'Reels', path: '/reels' },
   { icon: Music, name: 'Music', path: '/music' },
   { icon: MessagesSquare, name: 'Messages', path: '/messages' },
-  { icon: Gamepad2, name: 'Rooms', path: '/rooms' },
-  { icon: Heart, name: 'Interests', path: '/interests' },
-  { icon: Shield, name: 'Restrictions', path: '/restrictions' },
+  { icon: BarChart2, name: 'Insights', path: '/insights' },
   { icon: FileBarChart, name: 'Reports', path: '/reports' },
-  { icon: HelpCircle, name: 'FAQs', path: '/faqs' },
 ];
 
 const Sidebar: React.FC = () => {
