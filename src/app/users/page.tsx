@@ -198,14 +198,13 @@ const UserManagement: React.FC = () => {
   ];
 
   return (
-    
     <div className="my-10 px-2 md:px-0 max-w-[320px] mx-auto md:mx-0 md:max-w-full">
       {/* Mobile Filter Dropdown */}
       <div className="mb-7 md:hidden">
         <select
           value={activeFilter}
           onChange={(e) => setActiveFilter(e.target.value as FilterType)}
-          className="w-full px-4 py-2 bg-gray-200 rounded-full text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-2 bg-gray-200 rounded-full text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-500"
         >
           {filterTabs.map((tab) => (
             <option key={tab.key} value={tab.key}>
@@ -224,7 +223,7 @@ const UserManagement: React.FC = () => {
               onClick={() => setActiveFilter(tab.key)}
               className={`px-4 py-2 rounded-full text-sm font-semibold text-gray-900 transition-colors whitespace-nowrap ${
                 activeFilter === tab.key
-                  ? 'bg-green-600 text-white'
+                  ? 'bg-yellow-500 text-white'
                   : ''
               }`}
             >
@@ -234,33 +233,33 @@ const UserManagement: React.FC = () => {
         </div>
       </div>
 
-      <div className='shadow-md bg-white rounded-xl'>
+      <div className='shadow-md bg-gray-800 rounded-xl'>
         {/* Controls */}
-        <div className="p-4 md:p-6 border-b border-gray-200">
+        <div className="p-4 md:p-6 border-b border-gray-700">
           <div className="flex flex-col space-y-4">
             <div className="flex flex-wrap items-center gap-2">
-              <span className="text-sm text-gray-700 whitespace-nowrap">Show</span>
+              <span className="text-sm text-gray-300 whitespace-nowrap">Show</span>
               <select
                 value={entriesPerPage}
                 onChange={(e) => setEntriesPerPage(Number(e.target.value))}
-                className="border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="border border-gray-600 bg-gray-700 text-white rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
               >
                 <option value={5}>5</option>
                 <option value={10}>10</option>
                 <option value={25}>25</option>
                 <option value={50}>50</option>
               </select>
-              <span className="text-sm text-gray-700 whitespace-nowrap">entries</span>
+              <span className="text-sm text-gray-300 whitespace-nowrap">entries</span>
             </div>
 
             <div className="flex-1">
               <div className="flex items-center gap-2 max-w-sm">
-                <span className="text-sm text-gray-700 whitespace-nowrap">Search:</span>
+                <span className="text-sm text-gray-300 whitespace-nowrap">Search:</span>
                 <input
                   type="text"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="border border-gray-300 rounded-full px-4 py-2 text-sm w-full focus:outline-none focus:ring-2 focus:ring-green-500"
+                  className="border border-gray-600 bg-gray-700 text-white rounded-full px-4 py-2 text-sm w-full focus:outline-none focus:ring-2 focus:ring-yellow-500"
                   placeholder="Search users..."
                 />
               </div>
@@ -271,58 +270,58 @@ const UserManagement: React.FC = () => {
         {/* Table */}
         <div className="overflow-x-auto">
           <table className="w-full min-w-[800px]">
-            <thead className="bg-gray-100">
+            <thead className="bg-gray-700">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900  tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   User Image
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900  tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   Fullname
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900  tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   Username
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900  tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   Device Type
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900  tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   Moderator
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900  tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   Action
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-700">
               {currentUsers.map((user) => (
-                <tr key={user.id} className="hover:bg-gray-50">
+                <tr key={user.id} className="hover:bg-gray-700">
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="w-17 h-13 rounded-full overflow-hidden bg-gray-200">
-                      <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center text-white font-semibold">
+                    <div className="w-17 h-13 rounded-full overflow-hidden bg-gray-600">
+                      <div className="w-full h-full bg-gradient-to-br from-gray-500 to-gray-600 flex items-center justify-center text-white font-semibold">
                         {user.fullname.charAt(0)}
                       </div>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">
+                    <div className="text-sm font-medium text-white">
                       {user.fullname}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-700">
+                    <div className="text-sm text-gray-300">
                       {user.username}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-700">
+                    <div className="text-sm text-gray-300">
                       {user.deviceType}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <button
                       onClick={() => toggleModerator(user.id)}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${
-                        user.isModerator ? 'bg-green-500' : 'bg-gray-200'
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 ${
+                        user.isModerator ? 'bg-yellow-500' : 'bg-gray-200'
                       }`}
                     >
                       <span
@@ -357,9 +356,9 @@ const UserManagement: React.FC = () => {
         </div>
 
         {/* Pagination */}
-        <div className="px-4 md:px-6 py-4 border-t border-gray-200">
+        <div className="px-4 md:px-6 py-4 border-t border-gray-700">
           <div className="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
-            <div className="text-sm text-gray-700 text-center md:text-left">
+            <div className="text-sm text-gray-300 text-center md:text-left">
               Showing {startIndex + 1} to {Math.min(endIndex, filteredUsers.length)} of {filteredUsers.length} entries
             </div>
             
@@ -370,7 +369,7 @@ const UserManagement: React.FC = () => {
                 className={`px-3 py-2 rounded text-sm font-medium transition-colors flex items-center space-x-1 ${
                   currentPage === 1
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                    : 'bg-green-500 text-white hover:bg-green-600'
+                    : 'bg-yellow-500 text-white hover:bg-yellow-600'
                 }`}
               >
                 Previous
@@ -385,7 +384,7 @@ const UserManagement: React.FC = () => {
                     onClick={() => setCurrentPage(pageNum)}
                     className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
                       currentPage === pageNum
-                        ? 'bg-green-500 text-white'
+                        ? 'bg-yellow-500 text-white'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -400,7 +399,7 @@ const UserManagement: React.FC = () => {
                 className={`px-3 py-2 rounded text-sm font-medium transition-colors flex items-center space-x-1 ${
                   currentPage === totalPages
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                    : 'bg-green-500 text-white hover:bg-green-600'
+                    : 'bg-yellow-500 text-white hover:bg-yellow-600'
                 }`}
               >
                 Next

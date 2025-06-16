@@ -98,7 +98,7 @@ const StatsGrid: React.FC = () => {
     
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {statsData.map((stat, index) => (
-            <div key={index} className="bg-white rounded-[14px]  border border-gray-200 ">
+            <div key={index} className="bg-gray-800 rounded-[14px]  border border-gray-900 ">
               <StatCard
                 icon={stat.icon}
                 count={stat.count}

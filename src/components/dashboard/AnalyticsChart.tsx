@@ -74,12 +74,12 @@ export const AnalyticsChart: React.FC<ChartProps> = ({
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
+    <div className="bg-gray-800 rounded-lg shadow-sm border border-gray-900 p-4">
       {/* Mobile Header Layout */}
       <div className="mb-4">
         {/* Title and Value */}
         <div className="flex items-baseline gap-2 mb-3">
-          <h3 className="text-sm font-medium text-gray-700">{title}</h3>
+          <h3 className="text-sm font-medium text-gray-200">{title}</h3>
           <span className="text-lg font-bold" style={{ color }}>{totalValue}</span>
         </div>
         
@@ -92,7 +92,7 @@ export const AnalyticsChart: React.FC<ChartProps> = ({
                 onClick={() => setActiveTimeRange(range)}
                 className={`px-3 py-1.5 text-xs font-medium rounded transition-all duration-200 ${
                   activeTimeRange === range
-                    ? 'bg-green-500 text-white shadow-sm'
+                    ? 'bg-yellow-500 text-white shadow-sm'
                     : 'text-gray-600 bg-gray-100 hover:bg-gray-200'
                 }`}
               >

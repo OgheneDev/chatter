@@ -132,7 +132,7 @@ const InsightsManagement: React.FC = () => {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         {stats.map((stat, index) => (
-          <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div key={index} className="bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-900">
             <div className="flex items-center justify-between mb-4">
               <div className={`${stat.color} p-3 rounded-lg`}>
                 <stat.icon className="w-6 h-6 text-white" />
@@ -155,31 +155,31 @@ const InsightsManagement: React.FC = () => {
       {/* Tables */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Most Bookmarked Posts Table */}
-        <div className="bg-white rounded-xl shadow-md">
+        <div className="bg-gray-800 rounded-xl shadow-md">
           <div className="p-4 border-b border-gray-200">
             <h2 className="text-lg font-semibold">Most Bookmarked Posts</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50">
+              <thead className="bg-gray-600">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900">Post Title</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900">Author</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900">Bookmarks</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900">Actions</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-white">Post Title</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-white">Author</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-white">Bookmarks</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-white">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {bookmarkInsights.map((insight) => (
-                  <tr key={insight.id} className="hover:bg-gray-50">
+                  <tr key={insight.id}>
                     <td className="px-6 py-4">
-                      <div className="text-sm font-medium text-gray-900">{insight.postTitle}</div>
+                      <div className="text-sm font-medium text-white">{insight.postTitle}</div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-sm text-gray-600">{insight.authorName}</div>
+                      <div className="text-sm text-gray-200">{insight.authorName}</div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-sm font-medium text-gray-900">{insight.bookmarkCount.toLocaleString()}</div>
+                      <div className="text-sm font-medium text-white">{insight.bookmarkCount.toLocaleString()}</div>
                       <div className="text-xs text-gray-500">{insight.likeCount.toLocaleString()} likes</div>
                     </td>
                     <td className="px-6 py-4">
@@ -198,33 +198,33 @@ const InsightsManagement: React.FC = () => {
         </div>
 
         {/* User Follow Insights Table */}
-        <div className="bg-white rounded-xl shadow-md">
+        <div className="bg-gray-800 rounded-xl shadow-md">
           <div className="p-4 border-b border-gray-200">
             <h2 className="text-lg font-semibold">Top Users by Followers</h2>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full">
-              <thead className="bg-gray-50">
+              <thead className="bg-gray-600">
                 <tr>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900">Username</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900">Followers</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900">Follow Ratio</th>
-                  <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900">Actions</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-white">Username</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-white">Followers</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-white">Follow Ratio</th>
+                  <th className="px-6 py-3 text-left text-xs font-semibold text-white">Actions</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
                 {followInsights.map((insight) => (
-                  <tr key={insight.id} className="hover:bg-gray-50">
+                  <tr key={insight.id} >
                     <td className="px-6 py-4">
                       <div className="text-sm font-medium text-green-500 cursor-pointer">{insight.username}</div>
                       <div className="text-xs text-gray-500">{insight.fullname}</div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-sm font-medium text-gray-900">{insight.followers.toLocaleString()}</div>
+                      <div className="text-sm font-medium text-white">{insight.followers.toLocaleString()}</div>
                       <div className="text-xs text-gray-500">{insight.following.toLocaleString()} following</div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-sm font-medium text-gray-900">
+                      <div className="text-sm font-medium text-white">
                         {(insight.followBackRatio * 100).toFixed(1)}%
                       </div>
                     </td>

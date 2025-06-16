@@ -208,7 +208,7 @@ const PostsManagement: React.FC = () => {
         <select
           value={activeFilter}
           onChange={(e) => setActiveFilter(e.target.value as FilterType)}
-          className="w-full px-4 py-2 bg-gray-200 rounded-full text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-2 bg-gray-200 rounded-full text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-500"
         >
           {filterTabs.map((tab) => (
             <option key={tab.key} value={tab.key}>
@@ -227,7 +227,7 @@ const PostsManagement: React.FC = () => {
               onClick={() => setActiveFilter(tab.key)}
               className={`px-4 py-2 rounded-full text-sm font-semibold text-gray-900 transition-colors whitespace-nowrap ${
                 activeFilter === tab.key
-                  ? 'bg-green-600 text-white'
+                  ? 'bg-yellow-500 text-white'
                   : ''
               }`}
             >
@@ -237,32 +237,32 @@ const PostsManagement: React.FC = () => {
         </div>
       </div>
 
-      <div className='shadow-md bg-white rounded-xl'>
+      <div className='shadow-md bg-gray-800 rounded-xl'>
         {/* Controls */}
-        <div className="p-4 md:p-6 border-b border-gray-200">
+        <div className="p-4 md:p-6 border-b border-gray-700">
           <div className="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2">
-              <span className="text-sm text-gray-700">Show</span>
+              <span className="text-sm text-gray-300">Show</span>
               <select
                 value={entriesPerPage}
                 onChange={(e) => setEntriesPerPage(Number(e.target.value))}
-                className="border border-gray-300 rounded-full px-7 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                className="border border-gray-600 bg-gray-700 text-white rounded-full px-7 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
               >
                 <option value={5}>5</option>
                 <option value={10}>10</option>
                 <option value={25}>25</option>
                 <option value={50}>50</option>
               </select>
-              <span className="text-sm text-gray-700">entries</span>
+              <span className="text-sm text-gray-300">entries</span>
             </div>
 
             <div className="flex items-center space-x-2 w-full md:w-auto">
-              <span className="text-sm text-gray-700 whitespace-nowrap">Search:</span>
+              <span className="text-sm text-gray-300 whitespace-nowrap">Search:</span>
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="border border-gray-300 rounded-full px-4 py-2 text-sm w-full md:w-auto focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="border border-gray-600 bg-gray-700 text-white rounded-full px-4 py-2 text-sm w-full md:w-auto focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 placeholder="Search posts..."
               />
             </div>
@@ -272,39 +272,39 @@ const PostsManagement: React.FC = () => {
         {/* Table */}
         <div className="overflow-x-auto">
           <table className="w-full min-w-[1000px]">
-            <thead className="bg-gray-100">
+            <thead className="bg-gray-700">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   Content
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   User Name
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   Fullname
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   Comments
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   Likes
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   Restricted
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   Created At
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   Action
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-700">
               {currentPosts.map((post) => (
-                <tr key={post.id} className="hover:bg-gray-50">
+                <tr key={post.id} className="hover:bg-gray-700">
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex items-center justify-center w-14 h-12 rounded-lg bg-green-500 text-white">
+                    <div className="flex items-center justify-center w-14 h-12 rounded-lg bg-yellow-500 text-white">
                       {post.contentType === 'image' ? (
                         <Image className="w-5 h-5" />
                       ) : (
@@ -313,41 +313,39 @@ const PostsManagement: React.FC = () => {
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-green-500 underline cursor-pointer">
+                    <div className="text-sm font-medium text-yellow-500 underline cursor-pointer">
                       {post.username}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">
+                    <div className="text-sm text-white">
                       {post.fullname}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-700">
+                    <div className="text-sm text-gray-300">
                       {post.comments}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-700">
+                    <div className="text-sm text-gray-300">
                       {post.likes}
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     <button
                       onClick={() => toggleRestricted(post.id)}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 ${
-                        post.isRestricted ? 'bg-green-500' : 'bg-gray-200'
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 ${
+                        post.isRestricted ? 'bg-yellow-500' : 'bg-gray-200'
                       }`}
                     >
-                      <span
-                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                          post.isRestricted ? 'translate-x-6' : 'translate-x-1'
-                        }`}
-                      />
+                      <span className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                        post.isRestricted ? 'translate-x-6' : 'translate-x-1'
+                      }`} />
                     </button>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-700">
+                    <div className="text-sm text-gray-300">
                       {post.createdAt}
                     </div>
                   </td>
@@ -355,7 +353,7 @@ const PostsManagement: React.FC = () => {
                     <div className="flex space-x-2">
                       <button
                         onClick={() => handleViewPost(post.id)}
-                        className="bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-colors flex items-center space-x-2"
+                        className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-full text-sm font-semibold transition-colors flex items-center space-x-2"
                       >
                         <Image className="w-4 h-4" />
                         <span>View Post</span>
@@ -375,9 +373,9 @@ const PostsManagement: React.FC = () => {
         </div>
 
         {/* Pagination */}
-        <div className="px-4 md:px-6 py-4 border-t border-gray-200">
+        <div className="px-4 md:px-6 py-4 border-t border-gray-700">
           <div className="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
-            <div className="text-sm text-gray-700">
+            <div className="text-sm text-gray-300">
               Showing {startIndex + 1} to {Math.min(endIndex, filteredPosts.length)} of {filteredPosts.length} entries
             </div>
             
@@ -388,7 +386,7 @@ const PostsManagement: React.FC = () => {
                 className={`px-3 py-2 rounded text-sm font-medium transition-colors flex items-center space-x-1 ${
                   currentPage === 1
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                    : 'bg-green-500 text-white hover:bg-green-600'
+                    : 'bg-yellow-500 text-white hover:bg-yellow-600'
                 }`}
               >
                 Previous
@@ -403,7 +401,7 @@ const PostsManagement: React.FC = () => {
                     onClick={() => setCurrentPage(pageNum)}
                     className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
                       currentPage === pageNum
-                        ? 'bg-green-500 text-white'
+                        ? 'bg-yellow-500 text-white'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -418,7 +416,7 @@ const PostsManagement: React.FC = () => {
                 className={`px-3 py-2 rounded text-sm font-medium transition-colors flex items-center space-x-1 ${
                   currentPage === totalPages
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                    : 'bg-green-500 text-white hover:bg-green-600'
+                    : 'bg-yellow-500 text-white hover:bg-yellow-600'
                 }`}
               >
                 Next

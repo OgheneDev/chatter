@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
     <>
       <nav
         className={`
-          bg-white shadow-sm fixed top-0 right-0 left-0 md:left-[250px] z-20 ${navbarClass}
+          bg-gray-800 shadow-sm fixed top-0 right-0 left-0 md:left-[250px] z-20 ${navbarClass}
         `}
       >
         <div className="max-w-7xl mx-auto px-5 py-2 mb-1  flex justify-between items-center">
@@ -56,10 +56,10 @@ const Navbar: React.FC = () => {
                 <Menu className="w-6 h-6 text-gray-600" />
               )}
             </button>
-            <h2 className="font-semibold text-xl">Admin Panel</h2>
+            <h2 className="font-semibold text-xl text-white">Admin Panel</h2>
           </div>
           <div className="relative">
-            <button className="bg-gray-100 py-4 px-8 font-semibold text-sm rounded-full">
+            <button className="bg-yellow-500 text-white py-4 px-8 font-semibold text-sm rounded-full">
               Log Out
             </button>
           </div>
@@ -76,7 +76,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-[250px] bg-white z-30 transform transition-transform duration-300 ease-in-out md:hidden ${
+        className={`fixed top-0 left-0 h-full w-[250px] bg-gray-800 z-30 transform transition-transform duration-300 ease-in-out md:hidden ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
                     onClick={toggleMenu}
                     className={`menu-item py-3 px-6 w-[90%] mx-auto rounded-full flex items-center gap-3 text-sm transition-colors duration-200
                       ${isActive
-                        ? 'bg-green-700 text-white font-medium'
+                        ? 'bg-green-700 text-gray-800 font-medium'
                         : 'text-black hover:bg-gray-50'
                       }`}
                   >

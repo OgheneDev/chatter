@@ -211,7 +211,7 @@ const ReportsManagement: React.FC = () => {
         <select
           value={activeFilter}
           onChange={(e) => setActiveFilter(e.target.value as FilterType)}
-          className="w-full px-4 py-2 bg-gray-200 rounded-full text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-500"
+          className="w-full px-4 py-2 bg-gray-200 rounded-full text-sm font-semibold text-gray-900 focus:outline-none focus:ring-2 focus:ring-yellow-500"
         >
           {filterTabs.map((tab) => (
             <option key={tab.key} value={tab.key}>
@@ -230,7 +230,7 @@ const ReportsManagement: React.FC = () => {
               onClick={() => setActiveFilter(tab.key)}
               className={`px-4 py-2 rounded-full text-sm font-semibold text-gray-900 transition-colors whitespace-nowrap ${
                 activeFilter === tab.key
-                  ? 'bg-green-600 text-white'
+                  ? 'bg-yellow-500 text-white'
                   : ''
               }`}
             >
@@ -240,33 +240,33 @@ const ReportsManagement: React.FC = () => {
         </div>
       </div>
 
-      <div className='shadow-md bg-white rounded-xl'>
+      <div className='shadow-md bg-gray-800 rounded-xl'>
 
         {/* Controls */}
-        <div className="p-4 md:p-6 border-b border-gray-200">
+        <div className="p-4 md:p-6 border-b border-gray-700">
           <div className="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2">
-              <span className="text-sm text-gray-700">Show</span>
+              <span className="text-sm text-gray-300">Show</span>
               <select
                 value={entriesPerPage}
                 onChange={(e) => setEntriesPerPage(Number(e.target.value))}
-                className="border border-gray-300 rounded-full px-7 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                className="border border-gray-600 bg-gray-700 text-white rounded-full px-7 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
               >
                 <option value={5}>5</option>
                 <option value={10}>10</option>
                 <option value={25}>25</option>
                 <option value={50}>50</option>
               </select>
-              <span className="text-sm text-gray-700">entries</span>
+              <span className="text-sm text-gray-300">entries</span>
             </div>
 
             <div className="flex items-center space-x-2">
-              <span className="text-sm text-gray-700">Search:</span>
+              <span className="text-sm text-gray-300">Search:</span>
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="border border-gray-300 rounded-full px-4 py-2 text-sm w-full md:w-auto focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="border border-gray-600 bg-gray-700 text-white rounded-full px-4 py-2 text-sm w-full md:w-auto focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 placeholder="Search reports..."
               />
             </div>
@@ -276,62 +276,62 @@ const ReportsManagement: React.FC = () => {
         {/* Table */}
         <div className="overflow-x-auto">
           <table className="w-full min-w-[900px]">
-            <thead className="bg-gray-100">
+            <thead className="bg-gray-700">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   User Image
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   {getContentColumnHeader()}
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   User Identity
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   Reason
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   Description
                 </th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900 tracking-wider">
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   Action
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-700">
               {currentReports.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="px-6 py-8 text-center text-gray-500">
+                  <td colSpan={6} className="px-6 py-8 text-center text-gray-400">
                     No data available in table
                   </td>
                 </tr>
               ) : (
                 currentReports.map((report) => (
-                  <tr key={report.id} className="hover:bg-gray-50">
+                  <tr key={report.id} className="hover:bg-gray-700">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-200">
-                        <div className="w-full h-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center text-white font-semibold">
+                      <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-600">
+                        <div className="w-full h-full bg-gradient-to-br from-gray-500 to-gray-600 flex items-center justify-center text-white font-semibold">
                           {report.userIdentity.charAt(1).toUpperCase()}
                         </div>
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-gray-900">
+                      <div className="text-sm font-medium text-white">
                         {getContentName(report) || '-'}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-700">
+                      <div className="text-sm text-gray-300">
                         {report.userIdentity}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-700">
+                      <div className="text-sm text-gray-300">
                         {report.reason}
                       </div>
                     </td>
                     <td className="px-6 py-4">
-                      <div className="text-sm text-gray-700 max-w-xs truncate">
+                      <div className="text-sm text-gray-300 max-w-xs truncate">
                         {report.description}
                       </div>
                     </td>
@@ -339,7 +339,7 @@ const ReportsManagement: React.FC = () => {
                       <div className="flex space-x-2">
                         <button
                           onClick={() => handleViewReport(report.id)}
-                          className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors flex items-center space-x-2"
+                          className="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors flex items-center space-x-2"
                         >
                           <Eye className="w-4 h-4" />
                           <span>View</span>
@@ -367,9 +367,9 @@ const ReportsManagement: React.FC = () => {
         </div>
 
         {/* Footer with pagination */}
-        <div className="px-4 md:px-6 py-4 border-t border-gray-200">
+        <div className="px-4 md:px-6 py-4 border-t border-gray-700">
           <div className="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
-            <div className="text-sm text-gray-700">
+            <div className="text-sm text-gray-300">
               Showing {filteredReports.length === 0 ? 0 : startIndex + 1} to {Math.min(endIndex, filteredReports.length)} of {filteredReports.length} entries
             </div>
             

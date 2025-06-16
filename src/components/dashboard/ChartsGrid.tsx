@@ -61,7 +61,7 @@ const ChartsGrid: React.FC = () => {
             totalValue={219}
             valueLabel="Posts"
             data={postsData}
-            color="#10B981"
+            color="#eab308"
             maxValue={35}
           />
           
@@ -70,7 +70,7 @@ const ChartsGrid: React.FC = () => {
             totalValue={11}
             valueLabel="User Count"
             data={usersData}
-            color="#10B981"
+            color="#eab308"
             maxValue={2}
           />
           
@@ -79,7 +79,7 @@ const ChartsGrid: React.FC = () => {
             totalValue={15}
             valueLabel="Reels"
             data={reelsData}
-            color="#10B981"
+            color="#eab308"
             maxValue={5}
           />
           
@@ -88,7 +88,7 @@ const ChartsGrid: React.FC = () => {
             totalValue={3}
             valueLabel="Rooms"
             data={roomsData}
-            color="#10B981"
+            color="#eab308"
             maxValue={2}
           />
         </div>

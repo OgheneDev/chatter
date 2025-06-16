@@ -168,11 +168,11 @@ const MessagesManagement: React.FC = () => {
       {/* Stats Cards */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
         {stats.map((stat, index) => (
-          <div key={index} className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+          <div key={index} className="bg-gray-800 p-6 rounded-xl shadow-sm border border-gray-700">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600">{stat.title}</p>
-                <p className="text-2xl font-bold mt-1">{stat.value}</p>
+                <p className="text-sm text-gray-400">{stat.title}</p>
+                <p className="text-2xl font-bold mt-1 text-white">{stat.value}</p>
               </div>
               <div className={`${stat.color} p-3 rounded-lg`}>
                 <stat.icon className="w-6 h-6 text-white" />
@@ -206,7 +206,7 @@ const MessagesManagement: React.FC = () => {
               onClick={() => setActiveFilter(tab.key)}
               className={`px-4 py-2 rounded-full text-sm font-semibold text-gray-900 transition-colors whitespace-nowrap ${
                 activeFilter === tab.key
-                  ? 'bg-green-600 text-white'
+                  ? 'bg-yellow-500 text-white'
                   : ''
               }`}
             >
@@ -217,32 +217,32 @@ const MessagesManagement: React.FC = () => {
       </div>
 
       {/* Table Section */}
-      <div className='shadow-md bg-white rounded-xl'>
+      <div className='shadow-md bg-gray-800 rounded-xl'>
         {/* Table controls */}
-        <div className="p-4 md:p-6 border-b border-gray-200">
+        <div className="p-4 md:p-6 border-b border-gray-700">
           <div className="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
             <div className="flex items-center space-x-2">
-              <span className="text-sm text-gray-700">Show</span>
+              <span className="text-sm text-gray-300">Show</span>
               <select
                 value={entriesPerPage}
                 onChange={(e) => setEntriesPerPage(Number(e.target.value))}
-                className="border border-gray-300 rounded-full px-7 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                className="border border-gray-600 bg-gray-700 text-white rounded-full px-7 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-yellow-500"
               >
                 <option value={5}>5</option>
                 <option value={10}>10</option>
                 <option value={25}>25</option>
                 <option value={50}>50</option>
               </select>
-              <span className="text-sm text-gray-700">entries</span>
+              <span className="text-sm text-gray-300">entries</span>
             </div>
 
             <div className="flex items-center space-x-2">
-              <span className="text-sm text-gray-700">Search:</span>
+              <span className="text-sm text-gray-300">Search:</span>
               <input
                 type="text"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="border border-gray-300 rounded-full px-4 py-2 text-sm w-full md:w-auto focus:outline-none focus:ring-2 focus:ring-green-500"
+                className="border border-gray-600 bg-gray-700 text-white rounded-full px-4 py-2 text-sm w-full md:w-auto focus:outline-none focus:ring-2 focus:ring-yellow-500"
                 placeholder="Search users..."
               />
             </div>
@@ -252,40 +252,40 @@ const MessagesManagement: React.FC = () => {
         {/* Table */}
         <div className="overflow-x-auto">
           <table className="w-full min-w-[1000px]">
-            <thead className="bg-gray-100">
+            <thead className="bg-gray-700">
               <tr>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900">Username</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900">Full Name</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900">Messages Sent</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900">Messages Received</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900">Status</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900">Last Active</th>
-                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-900">Actions</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300">Username</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300">Full Name</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300">Messages Sent</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300">Messages Received</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300">Status</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300">Last Active</th>
+                <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300">Actions</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-700">
               {currentInsights.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-6 py-8 text-center text-gray-500">
+                  <td colSpan={7} className="px-6 py-8 text-center text-gray-400">
                     No data available in table
                   </td>
                 </tr>
               ) : (
                 currentInsights.map((insight) => (
-                  <tr key={insight.id} className="hover:bg-gray-50">
+                  <tr key={insight.id} className="hover:bg-gray-700">
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm font-medium text-green-500 underline cursor-pointer">
+                      <div className="text-sm font-medium text-yellow-500 underline cursor-pointer">
                         {insight.username}
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-900">{insight.fullname}</div>
+                      <div className="text-sm text-white">{insight.fullname}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-700">{insight.messagesSent}</div>
+                      <div className="text-sm text-gray-300">{insight.messagesSent}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="text-sm text-gray-700">{insight.messagesReceived}</div>
+                      <div className="text-sm text-gray-300">{insight.messagesReceived}</div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
                       <span className={`px-3 py-1 rounded-full text-xs font-medium ${
@@ -339,9 +339,9 @@ const MessagesManagement: React.FC = () => {
         </div>
 
         {/* Pagination */}
-        <div className="px-4 md:px-6 py-4 border-t border-gray-200">
+        <div className="px-4 md:px-6 py-4 border-t border-gray-700">
           <div className="flex flex-col md:flex-row md:items-center justify-between space-y-4 md:space-y-0">
-            <div className="text-sm text-gray-700">
+            <div className="text-sm text-gray-300">
               Showing {currentInsights.length === 0 ? 0 : startIndex + 1} to {Math.min(endIndex, currentInsights.length)} of {currentInsights.length} entries
             </div>
             
@@ -352,7 +352,7 @@ const MessagesManagement: React.FC = () => {
                 className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
                   currentPage === 1
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                    : 'bg-green-500 text-white hover:bg-green-600'
+                    : 'bg-yellow-500 text-white hover:bg-yellow-600'
                 }`}
               >
                 Previous
@@ -366,7 +366,7 @@ const MessagesManagement: React.FC = () => {
                     onClick={() => setCurrentPage(pageNum)}
                     className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
                       currentPage === pageNum
-                        ? 'bg-green-500 text-white'
+                        ? 'bg-yellow-500 text-white'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -381,7 +381,7 @@ const MessagesManagement: React.FC = () => {
                 className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
                   currentPage === totalPages || totalPages === 0
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                    : 'bg-green-500 text-white hover:bg-green-600'
+                    : 'bg-yellow-500 text-white hover:bg-yellow-600'
                 }`}
               >
                 Next

@@ -14,18 +14,18 @@ export const StatCard: React.FC<StatCardProps> = ({
         <div className={`w-14 h-14 rounded-full flex items-center justify-center ${iconColor}`}>
           {icon}
         </div>
-        <div className="text-3xl font-bold text-gray-900">
+        <div className="text-3xl font-bold text-white">
           {count}
         </div>
       </div>
       
       <div className="flex flex-col space-y-3">
-        <div className="text-lg font-semibold text-gray-900">
+        <div className="text-lg font-semibold text-white">
           {label}
         </div>
         <Link 
           href={link}
-          className="text-green-500 hover:text-green-600 text-[17px]  font-medium"
+          className="text-yellow-500 hover:text-yellow-600 text-[17px]  font-medium"
         >
           View More
         </Link>
