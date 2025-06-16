@@ -275,8 +275,8 @@ const ReportsManagement: React.FC = () => {
 
         {/* Table */}
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[900px]">
-            <thead className="bg-gray-700">
+          <table className="w-full md:max-w-[600px] min-w-[900px]">
+            <thead className="bg-gray-700"> 
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-semibold text-gray-300 tracking-wider">
                   User Image
@@ -380,7 +380,7 @@ const ReportsManagement: React.FC = () => {
                 className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
                   currentPage === 1
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                    : 'bg-green-500 text-white hover:bg-green-600'
+                    : 'bg-yellow-500 text-white hover:bg-yellow-600'
                 }`}
               >
                 Previous
@@ -395,7 +395,7 @@ const ReportsManagement: React.FC = () => {
                     onClick={() => setCurrentPage(pageNum)}
                     className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
                       currentPage === pageNum
-                        ? 'bg-green-500 text-white'
+                        ? 'bg-yellow-500 text-white'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
@@ -410,7 +410,7 @@ const ReportsManagement: React.FC = () => {
                 className={`px-3 py-2 rounded text-sm font-medium transition-colors ${
                   currentPage === totalPages || totalPages === 0
                     ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                    : 'bg-green-500 text-white hover:bg-green-600'
+                    : 'bg-yellow-500 text-white hover:bg-yellow-600'
                 }`}
               >
                 Next

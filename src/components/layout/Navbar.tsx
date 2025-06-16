@@ -81,8 +81,8 @@ const Navbar: React.FC = () => {
         }`}
       >
         {/* Header */}
-        <div className="p-4.5 border-b bg-gray-50 border-gray-200">
-          <h1 className="text-3xl text-center font-bold text-black">Chatter.</h1>
+        <div className="p-4.5 border-b bg-gray-800 border-gray-900">
+          <h1 className="text-3xl text-center font-bold text-white">Chatter.</h1>
         </div>
 
         {/* Menu Items */}
@@ -99,8 +99,8 @@ const Navbar: React.FC = () => {
                     onClick={toggleMenu}
                     className={`menu-item py-3 px-6 w-[90%] mx-auto rounded-full flex items-center gap-3 text-sm transition-colors duration-200
                       ${isActive
-                        ? 'bg-green-700 text-gray-800 font-medium'
-                        : 'text-black hover:bg-gray-50'
+                        ? 'bg-yellow-500 white font-medium'
+                        : 'text-white'
                       }`}
                   >
                     <Icon size={18} />
