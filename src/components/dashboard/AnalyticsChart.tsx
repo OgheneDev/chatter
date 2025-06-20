@@ -13,7 +13,7 @@ interface ChartProps {
   data: ChartData[];
   color: string;
   maxValue: number;
-}
+} 
 
 const generateYAxisTicks = (maxValue: number) => {
   const ticks = [];
@@ -198,11 +198,11 @@ export const AnalyticsChart: React.FC<ChartProps> = ({
       </div>
 
       {/* Chart */}
-      <div className="h-54 w-full">
+      <div className="h-54 w-full px-0"> {/* Remove any padding/margin */}
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart 
             data={data.slice(-7)}
-            margin={{ top: 5, right: 10, left: 20, bottom: 5 }}
+            margin={{ top: 5, right: 0, left: 0, bottom: 5 }} // Remove left margin
           >
             <defs>
               <linearGradient id={`gradient-${color}`} x1="0" y1="0" x2="0" y2="1">

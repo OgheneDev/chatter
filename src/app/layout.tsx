@@ -7,8 +7,8 @@ import Navbar from "@/components/layout/Navbar";
 const poppins = Poppins({ subsets: ["latin"], weight: "400" })
 
 export const metadata: Metadata = {
-  title: "Socio Meidum",
-  description: "Admin Panel for Socio Medium",
+  title: "Cube",
+  description: "Admin Panel for Cube",
 };
 
 export default function RootLayout({
