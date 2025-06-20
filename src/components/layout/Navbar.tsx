@@ -82,7 +82,7 @@ const Navbar: React.FC = () => {
       >
         {/* Header */}
         <div className="p-4.5 border-b bg-gray-800 border-gray-900">
-          <h1 className="text-3xl text-center font-bold text-white">Chatter.</h1>
+          <h1 className="text-3xl text-center font-bold text-white">Cube.</h1>
         </div>
 
         {/* Menu Items */}
