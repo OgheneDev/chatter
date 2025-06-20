@@ -51,9 +51,9 @@ const Navbar: React.FC = () => {
           <div className="flex items-center gap-4">
             <button onClick={toggleMenu} className="focus:outline-none md:hidden">
               {isMenuOpen ? (
-                <X className="w-6 h-6 text-gray-600" />
+                <X className="w-6 h-6 text-white" />
               ) : (
-                <Menu className="w-6 h-6 text-gray-600" />
+                <Menu className="w-6 h-6 text-white" />
               )}
             </button>
             <h2 className="font-semibold text-xl text-white">Admin Panel</h2>
